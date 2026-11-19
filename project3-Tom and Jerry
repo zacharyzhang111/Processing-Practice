@@ -1,0 +1,20 @@
+PImage tom;
+PImage Jerry;
+void setup(){
+  size(1000,1000);
+  tom=loadImage("tom.png");
+  Jerry=loadImage("jerry.png");
+  background(255);
+}
+void draw(){
+  
+  imageMode(CENTER);
+  float r1=random(50,300);
+ float r2=random(0,1000); 
+ float r3=random(0,1000);
+   float r4=random(50,300);
+ float r5=random(0,1000); 
+ float r6=random(0,1000);
+  image(tom,r2,r3,r1,r1);
+   image(Jerry,r5,r6,r4,r4);
+}
