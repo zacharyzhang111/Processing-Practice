@@ -1,0 +1,61 @@
+PImage photo1;
+PImage photo2;
+PImage photo3;
+PImage photo4;
+PImage photo5;
+float num=12,r=200;
+void setup() {
+  size(1000, 1000);
+ 
+  photo1=loadImage("Element04.png");
+   photo2=loadImage("Element05.png");
+photo3=loadImage("Element03.png");
+photo4=loadImage("Element01.png");
+photo5=loadImage("Element02.png");
+}
+void draw() {
+   background(255, 200, 10);
+  noFill();
+  stroke(0, 0, 255);
+  strokeWeight(5);
+  circle(width/2, height/2, 300);
+  stroke(255, 0, 0);
+  circle(width/2, height/2, 600);
+   
+   for (int i=0; i<num;i++) {
+      push();
+      translate(width/2,height/2);
+      float angle=i*2*PI/num;
+      rotate(angle);
+      
+  image(photo1,r+0,0);
+ 
+ 
+pop();
+ push();
+      translate(width/2,height/2);
+     
+      rotate(angle+radians(6));
+       image(photo2,r+0,0,120,70);
+pop();
+push();
+      translate(width/2,height/2);
+     
+      rotate(angle+radians(20));
+      image(photo3,r+150,0,50,70);
+pop();
+push();
+      translate(width/2,height/2);
+     
+      rotate(angle+radians(20));
+      image(photo4,r-50,0,100,60);
+pop();
+push();
+      translate(width/2,height/2);
+     
+      rotate(angle+radians(24));
+      image(photo5,r-50,0,60,35);
+pop();
+    
+}
+}
