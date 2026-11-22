@@ -1,0 +1,27 @@
+void setup() {
+  size(800, 800);
+  println(dist(0,0,800,800));
+}
+void draw() {
+if(mouseButton==LEFT){
+  //line(mouseX,mouseY,pmouseX,pmouseY);
+  drawStroke(mouseX,mouseY,pmouseX,pmouseY);
+}if(mouseButton==RIGHT){
+  drop(mouseX,mouseY);
+
+}
+}
+void drawStroke(float x,float y,float px,float py){
+ float speed=dist(x,y,px,py);
+ float thickness=map(speed,0,1131,0,100);
+ strokeWeight(thickness);
+ line(x,y,px,py);
+}
+void drop(float x, float y) {
+  float r=map(x, 0, 800, 0, 255);
+  float g=map(y, 0, 800, 0, 255);
+  fill(r, g, g-40, 3);
+  for (int i=0; i<=380; i+=3) {
+    circle(x, y, i-200);
+  }
+}
