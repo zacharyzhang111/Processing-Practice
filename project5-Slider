@@ -1,0 +1,48 @@
+import controlP5.*;
+ControlP5 gui;
+Slider strokeSlider;
+Slider rSlider;
+Slider gSlider;
+Slider bSlider;
+int strokeSize=100;
+int r=0;
+int g=0;
+int b=0;
+void setup() {
+  size(800, 800);
+  println(dist(0,0,800,800));
+  gui=new ControlP5(this);
+  strokeSlider=gui.addSlider("strokeSize").setPosition(10,30).setRange(0,500).setSize(100,19);
+  rSlider=gui.addSlider("r").setPosition(10,50).setRange(0,255).setSize(100,19);
+   gSlider=gui.addSlider("g").setPosition(10,70).setRange(0,255).setSize(100,19);
+   bSlider=gui.addSlider("b").setPosition(10,90).setRange(0,255).setSize(100,19);
+   gui.addButton("saveImage").setPosition(10,110).setSize(100,19);
+}
+void draw() {
+if(mouseButton==LEFT){
+  stroke(r,g,b);
+  
+  drawStroke(mouseX,mouseY,pmouseX,pmouseY);
+}if(mouseButton==RIGHT){
+  noStroke();
+  drop(mouseX,mouseY);
+
+}
+}
+void drawStroke(float x,float y,float px,float py){
+ float speed=dist(x,y,px,py);
+ float thickness=map(speed,0,1131,0,strokeSize);
+ strokeWeight(thickness);
+ line(x,y,px,py);
+}
+void drop(float x, float y) {
+  float r1=map(x, 0, 800, 0, 255);
+  float g1=map(y, 0, 800, 0, 255);
+  fill(r1, g1, g1 -40, 3);
+  for (int i=0; i<=380; i+=3) {
+    circle(x, y, i-200);
+  }
+}
+public  void saveImage(){
+  save("mysketch.png");
+}
